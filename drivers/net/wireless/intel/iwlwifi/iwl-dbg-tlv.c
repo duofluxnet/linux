@@ -228,8 +228,7 @@ static int iwl_dbg_tlv_alloc_region(struct iwl_trans *trans,
 
 	active_reg = &trans->dbg.active_regions[id];
 	if (*active_reg) {
-		IWL_WARN(trans, "WRT: Overriding region id %u\n", id);
-
+		//IWL_WARN(trans, "WRT: Overriding region id %u\n", id);
 		kfree(*active_reg);
 	}
 
@@ -237,6 +236,7 @@ static int iwl_dbg_tlv_alloc_region(struct iwl_trans *trans,
 	if (!*active_reg)
 		return -ENOMEM;
 
+	IWL_INFO(trans, "WRT: Enabling region id %u type %u\n", id, type);
 	IWL_DEBUG_FW(trans, "WRT: Enabling region id %u type %u\n", id, type);
 
 	return 0;
